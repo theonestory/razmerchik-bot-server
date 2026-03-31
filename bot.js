@@ -8,7 +8,7 @@ http.createServer((req, res) => {
 }).listen(process.env.PORT || 8080);
 
 // ТОКЕН (ВСТАВЬ ЕГО ВМЕСТО ЭТОГО ТЕКСТА, НО ОСТАВЬ КАВЫЧКИ)
-const bot = new Telegraf('8625745881:AAHmkcYuMu_9B0HrP-KTJEeJx2PEqdPa28M');
+const bot = new Telegraf(process.env.BOT_TOKEN);
 
 const MINI_APP_URL = 'https://theonestory.github.io/razmerchik/';
 
