@@ -1,16 +1,15 @@
 const { Telegraf, Markup } = require('telegraf');
 const http = require('http');
 
-// Этот блок нужен, чтобы бесплатный сервер Render не отключал бота
+// Создаем сервер, чтобы Render не отключал бота
 http.createServer((req, res) => {
   res.writeHead(200);
   res.end('Bot is alive!');
 }).listen(process.env.PORT || 8080);
 
-// ТОКЕН ОТ BOTFATHER
+// ТОКЕН (ВСТАВЬ ЕГО ВМЕСТО ЭТОГО ТЕКСТА, НО ОСТАВЬ КАВЫЧКИ)
 const bot = new Telegraf('8625745881:AAHmkcYuMu_9B0HrP-KTJEeJx2PEqdPa28M');
 
-// ССЫЛКА НА ТВОЙ МИНИ-АПП (GitHub Pages)
 const MINI_APP_URL = 'https://theonestory.github.io/razmerchik/';
 
 bot.start((ctx) => {
@@ -24,8 +23,10 @@ bot.start((ctx) => {
   );
 });
 
-bot.launch();
+bot.launch().then(() => {
+  console.log('Бот запущен успешно!');
+});
 
-// Обработка мягкой остановки
+// Обработка остановки
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
